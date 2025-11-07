@@ -64,7 +64,10 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/*
+          files: |
+            dist/file-windows/lab3.exe
+            dist/file-linux/lab3
+
           name: "Build ${{ github.sha }}"
           tag_name: "commit-${{ github.sha }}"
           body: "Automated release for commit ${{ github.sha }}"
