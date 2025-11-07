@@ -52,13 +52,13 @@ jobs:
       - name: Download Windows artifact
         uses: actions/download-artifact@v4
         with:
-          name: lab3-windows
+          name: file-windows
           path: dist/
 
       - name: Download Linux artifact
         uses: actions/download-artifact@v4
         with:
-          name: lab3-linux
+          name: file-linux
           path: dist/
 
       - name: Create Release
