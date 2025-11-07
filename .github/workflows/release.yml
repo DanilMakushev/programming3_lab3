@@ -15,14 +15,14 @@ jobs:
 
       - name: Build project
         run: |
-          cmake -B build
-          cmake --build build
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --config Release
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: file-windows
-          path: build/lab3.exe
+          path: build/Release/lab3.exe
 
 
   build-linux:
