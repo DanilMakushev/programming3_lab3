@@ -24,7 +24,6 @@ jobs:
           name: file-windows
           path: build/Release/lab3.exe
 
-
   build-linux:
     runs-on: ubuntu-latest
     permissions: write-all
@@ -42,7 +41,6 @@ jobs:
           name: file-linux
           path: build/lab3
 
-
   create-release:
     needs: [build-windows, build-linux]
     runs-on: ubuntu-latest
@@ -53,21 +51,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: file-windows
-          path: dist/
+          path: dist/windows
 
       - name: Download Linux artifact
         uses: actions/download-artifact@v4
         with:
           name: file-linux
-          path: dist/
+          path: dist/linux
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/file-windows/lab3.exe
-            dist/file-linux/lab3
-
+            dist/windows/lab3.exe
+            dist/linux/lab3
           name: "Build ${{ github.sha }}"
           tag_name: "commit-${{ github.sha }}"
           body: "Automated release for commit ${{ github.sha }}"
