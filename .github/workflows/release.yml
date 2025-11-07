@@ -64,7 +64,6 @@ jobs:
         with:
           tag_name: "latest"
           name: "Latest Build"
-          overwrite: true
           files: |
             file-windows/lab3.exe
             file-linux/lab3 
