@@ -41,3 +41,32 @@ jobs:
         with:
           name: file-linux
           path: build/lab3
+
+
+  create-release:
+    needs: [build-windows, build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Windows artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: file-windows
+          path: file-windows
+
+      - name: Download Linux artifact  
+        uses: actions/download-artifact@v4
+        with:
+          name: file-linux
+          path: file-linux
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: "latest"
+          name: "Latest Build"
+          overwrite: true
+          files: |
+            file-windows/lab3.exe
+            file-linux/lab3 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
