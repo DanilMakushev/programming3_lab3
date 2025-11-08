@@ -178,8 +178,7 @@ class UnidirectionalList{
                 size = other.size;
                 
                 other.size = 0;
-                other.firstNode = nullptr;
-                other.lastNode = nullptr;
+                other.clear();
             }
             return *this;
         }

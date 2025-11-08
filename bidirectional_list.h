@@ -175,6 +175,13 @@ class BidirectionalList{
 
         // удаляем список
         void clear() {
+            auto current = firstNode;
+            while (current != nullptr) {
+                auto nextNode = current->next;
+                current->next.reset();
+                current->prev.reset();
+                current = nextNode;
+            }
             firstNode.reset();
             lastNode.reset();
             size = 0;
